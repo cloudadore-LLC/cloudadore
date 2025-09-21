@@ -5,13 +5,13 @@ import Image from "next/image";
 const AboutUs = () => {
   
   return (
-   <section className=" rounded text-white py-10">
+   <section className=" rounded text-white py-6">
       
-      <div className=" mx-auto px-6 py-20 md:px-12 grid md:grid-cols-2 gap-10 items-center outline ">
+      <div className=" mx-auto px-6 py-20 md:px-12 grid md:grid-cols-2 gap-10 items-center  ">
       <div>
         <p className="text-[#08568A] text-[16px] font-medium ">About US</p>
         <p
-          className="font-nunito font-bold text-4xl leading-tight tracking-tight">
+          className="font-nunito font-bold text-4xl leading-tight  tracking-tight">
           Building the future of cloud <br /> innovation
         </p>
         <p className="text-[#333333] text-[18px] ">

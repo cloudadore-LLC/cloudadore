@@ -10,8 +10,9 @@ import Testimonials from "@/views/Testimonials";
 
 export default function Home() {
   return (
-    <div className="max-w-7xl outline outline-red-600 mx-auto ">
-      <Hero />
+    <div>
+      <div className=" lg:max-w-7xl mx-auto">
+        <Hero />
       <AboutUs />
       <Features />
       <Events />
@@ -19,6 +20,8 @@ export default function Home() {
       <Testimonials />
       <Sponsors />
       <CTA />
+      </div>
+      
     </div>
   );
 }
