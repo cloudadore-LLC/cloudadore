@@ -4,8 +4,25 @@ import { FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram, FaXTwitter } from "r
 export default function FooterSection() {
   return (
     <footer className="bg-gradient-to-b from-blue-800 to-blue-900 text-white pt-12">
+      {/* Connect With Us */}
+      <div className="flex justify-center">
+        <div className="bg-gradient-to-r from-blue-700 to-blue-500 rounded-xl shadow-md w-full max-w-4xl text-center p-8 -mt-16">
+          <h2 className="text-xl font-semibold mb-2">Connect With Us</h2>
+          <p className="text-gray-100 mb-6">
+            Follow us on social media for the latest updates, tips, and community highlights
+          </p>
+          <div className="flex justify-center space-x-6 text-lg">
+            <FaFacebookF className="cursor-pointer hover:text-gray-200" />
+            <FaFacebookF className="cursor-pointer hover:text-gray-200" />
+            <FaFacebookF className="cursor-pointer hover:text-gray-200" />
+            <FaFacebookF className="cursor-pointer hover:text-gray-200" />
+            <FaFacebookF className="cursor-pointer hover:text-gray-200" />
+          </div>
+        </div>
+      </div>
+
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+    <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo & Info */}
         <div>
           <img src="/cecf005214585628fbf93a768983a7a24628716b(1).png" alt="Cloudadore Logo" className="h-8" />
