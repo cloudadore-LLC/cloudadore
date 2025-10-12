@@ -82,10 +82,10 @@ export default function FooterSection() {
         </div>
       </div>
 
-      {/* Bottom */}
-      <div className="text-center text-gray-400 text-sm py-4 border-t border-gray-700">
-        © 2025 CloudAdore Club. All rights reserved.
-      </div>
-    </footer>
-  );
+          <div className="border-t border-blue-800 mt-12 pt-8 text-center text-sm text-blue-200">
+            <p>&copy; 2025 Cloudadore. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+  )
 }
