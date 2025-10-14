@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import React from 'react'
 
-const Footer = () => {
+export default function FooterSection() {
   return (
     <footer className="bg-blue-950 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
