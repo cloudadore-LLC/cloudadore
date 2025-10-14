@@ -1,14 +1,4 @@
-<<<<<<< Updated upstream
-import React from 'react'
 
-const page = () => {
-  return (
-    <div>page</div>
-  )
-}
-
-export default page
-=======
 import Card from "@/components/Card";
 import CTA from "@/views/CTA";
 import Sponsors from "@/views/Sponsors";
@@ -206,4 +196,4 @@ const page = () => {
 };
 
 export default page;
->>>>>>> Stashed changes
+

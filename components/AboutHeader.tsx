@@ -50,7 +50,7 @@ const AboutHeader = () => {
         <h1 className="text-lg font-bold text-blue-900">
           <Link href="/">
             <Image
-              src="/brandlogo.svg"
+              src="/Logo (1).svg"
               alt="brandlogo"
               width={120}
               height={40}
