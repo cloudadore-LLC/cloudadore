@@ -22,21 +22,23 @@ const Header: React.FC = () => {
     { name: "Merch Store", link: "/store" },
     {
       name: "Events",
-      dropdown: [
-        { label: "Upcoming Events", link: "/events/upcoming" },
-        { label: "Past Events", link: "/events/past" },
-        { label: "Volunteer", link: "/events/volunteer" },
-      ],
+      link: "/events",
+      // dropdown: [
+      //   { label: "Upcoming Events", link: "/events/upcoming" },
+      //   { label: "Past Events", link: "/events/past" },
+      //   { label: "Volunteer", link: "/events/volunteer" },
+      // ],
     },
     {
       name: "Resources",
+      link: "/resources",
       dropdown: [
         { label: "Blog", link: "/resources/blog" },
-        { label: "Downloads", link: "/resources/downloads" },
+        { label: "Downloads", link: "/resources/download" },
         { label: "Media", link: "/resources/media" },
       ],
     },
-    { name: "Get Involved", link: "/get-involved" },
+    { name: "Get Involved", link: "/getInvolved" },
     { name: "Contact", link: "/contact" },
   ];
 
@@ -57,17 +59,42 @@ const Header: React.FC = () => {
 
         <div className="flex items-center space-x-3 text-xs md:text-sm">
           <span className="hidden sm:block">Follow us:</span>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Twitter size={16} className="cursor-pointer hover:text-gray-300" />
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <Facebook size={16} className="cursor-pointer hover:text-gray-300" />
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Facebook
+              size={16}
+              className="cursor-pointer hover:text-gray-300"
+            />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <Linkedin size={16} className="cursor-pointer hover:text-gray-300" />
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Linkedin
+              size={16}
+              className="cursor-pointer hover:text-gray-300"
+            />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <Instagram size={16} className="cursor-pointer hover:text-gray-300" />
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Instagram
+              size={16}
+              className="cursor-pointer hover:text-gray-300"
+            />
           </a>
         </div>
       </div>
@@ -90,12 +117,8 @@ const Header: React.FC = () => {
             <li
               key={index}
               className="relative group"
-              onMouseEnter={() =>
-                item.dropdown && setOpenDropdown(item.name)
-              }
-              onMouseLeave={() =>
-                item.dropdown && setOpenDropdown(null)
-              }
+              onMouseEnter={() => item.dropdown && setOpenDropdown(item.name)}
+              onMouseLeave={() => item.dropdown && setOpenDropdown(null)}
             >
               {item.dropdown ? (
                 <button className="flex items-center space-x-1 hover:text-[#0f4c81] transition">
