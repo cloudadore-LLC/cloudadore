@@ -11,10 +11,16 @@ import {
   X,
   ChevronDown,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const pathname = usePathname();
 
   const navItems = [
     { name: "Home", link: "/" },
@@ -41,47 +47,99 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="w-full shadow relative">
-      {/* Top bar */}
-      <div className="bg-[#0f4c81] text-white text-sm flex justify-between items-center px-4 md:px-6 py-2">
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2">
-            <Phone size={16} />
-            <span>(+234-8101234567)</span>
-          </div>
-          <div className="hidden md:flex items-center space-x-2">
-            <Mail size={16} />
-            <span>info@cloudadore.com</span>
-          </div>
+    <div>
+      <section className="hidden lg:flex justify-between text-sm p-2 bg-[#08568A] text-white">
+        <div className="flex items-center gap-4">
+          <span className="flex items-center gap-1">
+            <Phone className="w-4 h-4" /> +234-8101234567
+          </span>
+          <span className="flex items-center gap-1">
+            <Mail className="w-4 h-4" /> info@cloudadore.com
+          </span>
         </div>
 
         <div className="flex items-center space-x-3 text-xs md:text-sm">
           <span className="hidden sm:block">Follow us:</span>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Twitter size={16} className="cursor-pointer hover:text-gray-300" />
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <Facebook size={16} className="cursor-pointer hover:text-gray-300" />
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Facebook
+              size={16}
+              className="cursor-pointer hover:text-gray-300"
+            />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <Linkedin size={16} className="cursor-pointer hover:text-gray-300" />
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Linkedin
+              size={16}
+              className="cursor-pointer hover:text-gray-300"
+            />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <Instagram size={16} className="cursor-pointer hover:text-gray-300" />
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Instagram
+              size={16}
+              className="cursor-pointer hover:text-gray-300"
+            />
           </a>
         </div>
-      </div>
+      </section>
 
-      {/* Main Navbar */}
-      <nav className="flex justify-between items-center px-4 md:px-6 py-3 bg-white relative">
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <img
-            src="/cecf005214585628fbf93a768983a7a24628716b(1).png"
-            alt="Cloudadore Logo"
-            className="h-8"
-          />
-          <span className="text-[#0f4c81] font-bold text-lg">CLOUDADORE</span>
+      <div className="  max-w-7xl outline flex items-center justify-between px-6 py-4">
+        <h1 className="text-lg font-bold text-blue-900">
+          <Link href="/">
+            <Image
+              src="/brandlogo.svg"
+              alt="brandlogo"
+              width={120}
+              height={40}
+            />
+          </Link>
+        </h1>
+        <nav className="hidden md:flex items-center gap-6 text-gray-700">
+          {navItems.map((link) => {
+            const isActive = pathname === link.link;
+            // Only render Link if link.link exists
+            if (link.link) {
+              return (
+                <Link
+                  key={link.name}
+                  href={link.link}
+                  className={`transition-colors ${
+                    isActive
+                      ? "text-blue-700 font-semibold border-b-2 border-blue-700"
+                      : "hover:text-blue-600"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            }
+            return null;
+          })}
+        </nav>
+        <div className=" hidden lg:flex items-center gap-2">
+          <Button className="outline outline-[#EB842B] text-[#EB842B] bg-white cursor-pointer">
+            Donate
+          </Button>
+          <Button className="bg-[#08568A] text-white cursor-pointer  ">
+            Join Community
+          </Button>
         </div>
 
         {/* Desktop Links */}
@@ -90,12 +148,8 @@ const Header: React.FC = () => {
             <li
               key={index}
               className="relative group"
-              onMouseEnter={() =>
-                item.dropdown && setOpenDropdown(item.name)
-              }
-              onMouseLeave={() =>
-                item.dropdown && setOpenDropdown(null)
-              }
+              onMouseEnter={() => item.dropdown && setOpenDropdown(item.name)}
+              onMouseLeave={() => item.dropdown && setOpenDropdown(null)}
             >
               {item.dropdown ? (
                 <button className="flex items-center space-x-1 hover:text-[#0f4c81] transition">
@@ -154,7 +208,7 @@ const Header: React.FC = () => {
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-      </nav>
+      </div>
 
       {/* Mobile Menu */}
       {isOpen && (
@@ -227,7 +281,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       )}
-    </header>
+    </div>
   );
 };
 
