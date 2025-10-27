@@ -4,7 +4,7 @@ import React from 'react'
 const Testimonials = () => {
   return (
      <section className="py-16 px-4 bg-gray-50">
-        {/* <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">What others say about our community</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -57,8 +57,9 @@ const Testimonials = () => {
               </div>
             ))}
           </div>
-        </div> */}
+        </div>
       </section>
+    
   )
 }
 

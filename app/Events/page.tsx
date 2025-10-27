@@ -25,7 +25,7 @@ const page = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto mt-20 outline grid md:grid-cols-2">
+      <div className="max-w-7xl mx-auto mt-20 outline grid  md:grid-cols-2">
         <div>
           {/* tag for event */}
           <span className="rounded-lg mt-10  bg-[#FFEAD8] text-[#EB842B] p-2 ">
@@ -88,7 +88,7 @@ const page = () => {
             alt="Background Image"
             height={500}
             width={500}
-            className="m-10"
+            className="md:m-10"
           />
         </div>
       </div>
@@ -121,24 +121,24 @@ const page = () => {
         <div className="grid gap-4 md:grid-cols-3">
           <EventCard
             tag="upcoming"
-            header="new haven"
-            content="our new event for upcoming cloud devs"
+            title="new haven"
+            description="our new event for upcoming cloud devs"
             date="12/12/24"
             location="Ojuelegba"
             image="/eventsImages/Rectangle 1463.png"
           />
           <EventCard
             tag="upcoming"
-            header="new haven"
-            content="our new event for upcoming cloud devs"
+            title="new haven"
+            description="our new event for upcoming cloud devs"
             date="12/12/25"
             location="Ojuelegba"
             image="/eventsImages/Rectangle 1463.png"
           />
           <EventCard
             tag="upcoming"
-            header="new haven"
-            content="our new event for upcoming cloud devs"
+            title="new haven"
+            description="our new event for upcoming cloud devs"
             date="12/12/24"
             location="Ojuelegba"
             image="/eventsImages/Rectangle 1463.png"

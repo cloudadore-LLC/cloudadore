@@ -117,7 +117,7 @@ const page = () => {
               tech industry <br /> to grow both spiritually and professionally.
             </p>
           </div>
-          <div className="grid gap-10 md:grid-cols-2">
+          <div className="grid gap-10 m-4 md:grid-cols-2">
             <Card
               icon={undefined}
               featureCardHeader="Our Mission"

@@ -17,9 +17,12 @@ export default function Footer() {
             place for you at CloudAdore.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-medium transition">
+            
+             <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-medium transition">
               Join Community
             </button>
+           
+           
             <button className="border border-white hover:bg-white hover:text-[#0A6BB5] text-white px-6 py-2 rounded-lg font-medium transition">
               Get Involved
             </button>
