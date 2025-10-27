@@ -31,7 +31,7 @@ const Merch = () => {
   return (
     <section className="py-12 px-6 md:px-12 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="   md:flex justify-between items-center mb-6">
         <div>
           <h2 className="text-2xl font-bold">Own the Cloud Look</h2>
           <p className="text-gray-600">
@@ -39,7 +39,7 @@ const Merch = () => {
             everywhere.
           </p>
         </div>
-        <a href="#" className="text-blue-600 text-sm hover:underline">
+        <a href="/merchstore" className="text-blue-600 text-sm hover:underline">
           Visit Store →
         </a>
       </div>

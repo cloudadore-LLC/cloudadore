@@ -125,7 +125,7 @@ const page = () => {
             content="our new event for upcoming cloud devs"
             date="12/12/24"
             location="Ojuelegba"
-            image='/eventsImages/Rectangle 1463.png'
+            image="/eventsImages/Rectangle 1463.png"
           />
           <EventCard
             tag="upcoming"
@@ -133,7 +133,7 @@ const page = () => {
             content="our new event for upcoming cloud devs"
             date="12/12/25"
             location="Ojuelegba"
-            image='/eventsImages/Rectangle 1463.png'
+            image="/eventsImages/Rectangle 1463.png"
           />
           <EventCard
             tag="upcoming"
@@ -141,9 +141,14 @@ const page = () => {
             content="our new event for upcoming cloud devs"
             date="12/12/24"
             location="Ojuelegba"
-            image='/eventsImages/Rectangle 1463.png'
+            image="/eventsImages/Rectangle 1463.png"
           />
         </div>
+      </section>
+      <section>
+        <Button className="bg-[#0f4c81] text-white px-4 py-2 rounded-md text-sm hover:bg-[#09365e] transition">
+          Join Community
+        </Button>
       </section>
     </div>
   );

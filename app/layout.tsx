@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/views/Header";
 import Footer from "@/views/Footer";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,12 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased` }
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
         {children}
-        <Footer/>
-
+        <Footer />
       </body>
     </html>
   );

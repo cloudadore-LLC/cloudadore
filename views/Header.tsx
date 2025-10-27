@@ -10,33 +10,29 @@ import {
   Menu,
   X,
   ChevronDown,
+  ShoppingCart,
 } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+// import CartPage from "@/app/cart/page";
+// import { useAppSelector } from "@/lib/hooks";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  //  const cartItems = useAppSelector((state) => state.cart.items)
+  // const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   const navItems = [
     { name: "Home", link: "/" },
     { name: "About", link: "/about" },
-    { name: "Merch Store", link: "/store" },
+    { name: "Merch Store", link: "/merchstore" },
     {
       name: "Events",
       link: "/events",
-      // dropdown: [
-      //   { label: "Upcoming Events", link: "/events/upcoming" },
-      //   { label: "Past Events", link: "/events/past" },
-      //   { label: "Volunteer", link: "/events/volunteer" },
-      // ],
     },
     {
       name: "Resources",
       link: "/resources",
-      dropdown: [
-        { label: "Blog", link: "/resources/blog" },
-        { label: "Downloads", link: "/resources/download" },
-        { label: "Media", link: "/resources/media" },
-      ],
     },
     { name: "Get Involved", link: "/getInvolved" },
     { name: "Contact", link: "/contact" },
@@ -108,68 +104,53 @@ const Header: React.FC = () => {
             alt="Cloudadore Logo"
             className="h-8"
           />
-          <span className="text-[#0f4c81] font-bold text-lg">CLOUDADORE</span>
+          <Link href="/">
+            <span className="text-[#0f4c81] font-bold text-lg">CLOUDADORE</span>
+          </Link>
         </div>
 
         {/* Desktop Links */}
         <ul className="hidden lg:flex items-center space-x-6 text-gray-700 text-sm relative">
           {navItems.map((item, index) => (
-            <li
-              key={index}
-              className="relative group"
-              onMouseEnter={() => item.dropdown && setOpenDropdown(item.name)}
-              onMouseLeave={() => item.dropdown && setOpenDropdown(null)}
-            >
-              {item.dropdown ? (
-                <button className="flex items-center space-x-1 hover:text-[#0f4c81] transition">
-                  <span>{item.name}</span>
-                  <ChevronDown size={14} />
-                </button>
-              ) : (
-                <a
-                  href={item.link}
-                  className={`cursor-pointer hover:text-[#0f4c81] hover:underline hover:underline-offset-4 transition ${
-                    item.name === "Contact" ? "border-b-2 border-[#0f4c81]" : ""
-                  }`}
-                >
-                  {item.name}
-                </a>
-              )}
-
-              {/* Dropdown */}
-              {item.dropdown && openDropdown === item.name && (
-                <ul className="absolute left-0 top-full mt-2 bg-white border shadow-lg rounded-md py-2 w-48 z-30">
-                  {item.dropdown.map((sub, i) => (
-                    <li key={i}>
-                      <a
-                        href={sub.link}
-                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-[#0f4c81]"
-                      >
-                        {sub.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
+            <li key={index} className="relative group">
+              <a
+                href={item.link}
+                className={`cursor-pointer hover:text-[#0f4c81] hover:underline hover:underline-offset-4 transition ${
+                  item.name === "Contact" ? "border-b-2 border-[#0f4c81]" : ""
+                }`}
+              >
+                {item.name}
+              </a>
             </li>
           ))}
         </ul>
+        
+         <Link href="/cart" className="relative">
+            {/* <ShoppingCart className="w-5 h-5" />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-destructive text-destructive-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {cartCount}
+              </span>
+            )} */}
+          </Link>
 
         {/* Desktop Buttons */}
-        <div className="hidden lg:flex items-center space-x-3">
+        {/* donate is moved to events page */}
+        {/* <div className="hidden lg:flex items-center space-x-3">
           <a
             href="/donate"
             className="border border-[#f97316] text-[#f97316] px-3 py-1 rounded-md text-sm hover:bg-[#f97316] hover:text-white transition"
           >
             Donate
           </a>
+          join comminuty moved to events page
           <a
             href="/join"
             className="bg-[#0f4c81] text-white px-4 py-1 rounded-md text-sm hover:bg-[#09365e] transition"
           >
             Join Community
           </a>
-        </div>
+        </div> */}
 
         {/* Mobile Hamburger */}
         <div className="lg:hidden">
@@ -185,69 +166,19 @@ const Header: React.FC = () => {
           <ul className="flex flex-col space-y-3 text-gray-700 text-sm">
             {navItems.map((item, index) => (
               <li key={index} className="flex flex-col">
-                {item.dropdown ? (
-                  <>
-                    <button
-                      onClick={() =>
-                        setOpenDropdown(
-                          openDropdown === item.name ? null : item.name
-                        )
-                      }
-                      className="flex items-center justify-between hover:text-[#0f4c81]"
-                    >
-                      {item.name}
-                      <ChevronDown
-                        size={16}
-                        className={`transition-transform ${
-                          openDropdown === item.name ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    {openDropdown === item.name && (
-                      <ul className="pl-4 mt-2 space-y-2">
-                        {item.dropdown.map((sub, i) => (
-                          <li key={i}>
-                            <a
-                              href={sub.link}
-                              className="block hover:text-[#0f4c81]"
-                            >
-                              {sub.label}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </>
-                ) : (
-                  <a
-                    href={item.link}
-                    className={`cursor-pointer hover:text-[#0f4c81] hover:underline hover:underline-offset-4 ${
-                      item.name === "Contact"
-                        ? "border-b-2 border-[#0f4c81] w-max"
-                        : ""
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                )}
+                <a
+                  href={item.link}
+                  className={`cursor-pointer hover:text-[#0f4c81] hover:underline hover:underline-offset-4 ${
+                    item.name === "Contact"
+                      ? "border-b-2 border-[#0f4c81] w-max"
+                      : ""
+                  }`}
+                >
+                  {item.name}
+                </a>
               </li>
             ))}
           </ul>
-
-          <div className="flex flex-col space-y-3 pt-3">
-            <a
-              href="/donate"
-              className="border border-[#f97316] text-[#f97316] px-3 py-2 rounded-md text-sm hover:bg-[#f97316] hover:text-white transition"
-            >
-              Donate
-            </a>
-            <a
-              href="/join"
-              className="bg-[#0f4c81] text-white px-4 py-2 rounded-md text-sm hover:bg-[#09365e] transition"
-            >
-              Join Community
-            </a>
-          </div>
         </div>
       )}
     </header>

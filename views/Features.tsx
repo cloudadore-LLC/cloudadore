@@ -4,9 +4,9 @@ import React from "react";
 
 const Features = () => {
   return (
-    <div className="flex flex-col bg-gray-200 py-4">
+    <div className="flex flex-col py-4">
       {/* top section */}
-      <section className=" flex flex-col mx-auto text-center gap-4">
+      <section className=" flex flex-col m-4 md:mx-auto text-center gap-4">
         <span className="text-[#121212] text-[40px] font-bold">
           Why choose cloudadore?
         </span>
@@ -18,7 +18,7 @@ const Features = () => {
       </section>
 
       {/* bottom section, cards go here */}
-      <section className=" grid md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+      <section className=" grid m-3 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
        
         <Card
           icon={<Cloud />}
