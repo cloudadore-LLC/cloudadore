@@ -1,158 +1,204 @@
-"use client";
+// "use client"
 
-import { useState, useEffect } from "react";
+// import Link from "next/link"
 
-export default function PaymentSection() {
-  const [paymentOption, setPaymentOption] = useState<"transfer" | "card">("transfer");
-  const [timeLeft, setTimeLeft] = useState(10 * 60);
-  const [cardNumber, setCardNumber] = useState("");
-  const [expiry, setExpiry] = useState("");
-  const [cvv, setCvv] = useState("");
-  const [saveCard, setSaveCard] = useState(false);
-  const amount = 100000;
+// import { Button } from "@/components/ui/button"
+// import { Card } from "@/components/ui/card"
+// import { ChevronRight } from "lucide-react"
+// import { useAppDispatch, useAppSelector } from "@/lib/hooks"
+// import { setStep, setPaymentMethod, resetCheckout } from "@/lib/slices/checkoutSlice"
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+// export default function CheckoutPage() {
+//   const dispatch = useAppDispatch()
+//   const step = useAppSelector((state) => state.checkout.step)
+//   const paymentMethod = useAppSelector((state) => state.checkout.paymentMethod)
+//   const cartItems = useAppSelector((state) => state.cart.items)
 
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
+//   const subtotal = cartItems.reduce((sum, item) => sum + ((item as any).price ?? 0) * item.quantity, 0)
+//   const shipping = 0
+//   const tax = 80.99
+//   const total = subtotal + shipping + tax
 
-  const handleConfirm = () => {
-    if (paymentOption === "transfer") {
-      alert("Transfer confirmed!");
-    } else {
-      alert(`Paid ₦${amount.toLocaleString()}.00 successfully!`);
-    }
-  };
+//   const handlePaymentSuccess = () => {
+//     dispatch(setStep(2))
+//   }
 
-  return (
-    <section className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4 py-16">
-      {/* Breadcrumb */}
-      <div className="w-full max-w-md text-sm text-gray-500 mb-6">
-        <p>
-          <span className="text-gray-400">Home</span> &gt;{" "}
-          <span className="text-gray-400">Shopping Cart</span> &gt;{" "}
-          <span className="text-blue-600 font-medium">Checkout</span>
-        </p>
-      </div>
+//   const handleContinueShopping = () => {
+//     dispatch(resetCheckout())
+//   }
 
-      {/* Payment Card Container */}
-      <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h2 className="text-lg font-semibold mb-4 text-gray-800">Make Payment</h2>
-        <hr className="mb-4" />
+//   return (
+//     <main className="min-h-screen bg-background">
+      
+//       <div className="container mx-auto px-4 py-8">
+//         {/* Breadcrumb */}
+//         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
+//           <Link href="/" className="hover:text-foreground">
+//             Home
+//           </Link>
+//           <ChevronRight className="w-4 h-4" />
+//           <Link href="/cart" className="hover:text-foreground">
+//             Shopping Cart
+//           </Link>
+//           <ChevronRight className="w-4 h-4" />
+//           <span className="text-foreground">Checkout</span>
+//         </div>
 
-        {/* Payment Options */}
-        <div className="mb-6">
-          <p className="text-sm font-medium text-gray-700 mb-2">Select Payment Option</p>
-          <div className="flex gap-6">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="radio"
-                name="payment"
-                value="transfer"
-                checked={paymentOption === "transfer"}
-                onChange={() => setPaymentOption("transfer")}
-                className="accent-blue-600"
-              />
-              <span>Transfer</span>
-            </label>
+//         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+//           {/* Checkout Form */}
+//           <div className="lg:col-span-2">
+//             {step === 1 && (
+//               <Card className="p-8">
+//                 <h2 className="text-2xl font-bold mb-6">Make Payment</h2>
 
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="radio"
-                name="payment"
-                value="card"
-                checked={paymentOption === "card"}
-                onChange={() => setPaymentOption("card")}
-                className="accent-blue-600"
-              />
-              <span>Card</span>
-            </label>
-          </div>
-        </div>
+//                 <div className="space-y-4 mb-8">
+//                   <label
+//                     className="flex items-center gap-3 p-4 border-2 border-border rounded-lg cursor-pointer hover:bg-muted/50 transition"
+//                     onClick={() => dispatch(setPaymentMethod("transfer"))}
+//                   >
+//                     <input
+//                       type="radio"
+//                       name="payment"
+//                       checked={paymentMethod === "transfer"}
+//                       onChange={() => dispatch(setPaymentMethod("transfer"))}
+//                       className="w-4 h-4"
+//                     />
+//                     <span className="font-semibold">Transfer</span>
+//                   </label>
 
-        {/* Payment UI Toggle */}
-        {paymentOption === "transfer" ? (
-          <div className="space-y-3 text-gray-700 mb-6 transition-all">
-            <p>
-              Transfer <span className="font-semibold text-gray-900">₦{amount.toLocaleString()}</span> to:
-            </p>
-            <p className="font-semibold text-gray-900">Polaris Bank</p>
-            <p className="font-mono text-gray-800 text-lg tracking-wide">0123456781</p>
-            <p className="text-sm text-gray-600">
-              Account Name: <span className="font-medium">Cloudadore Community</span>
-            </p>
-            <p className="text-sm text-gray-500">
-              Expires in{" "}
-              <span className="text-red-500 font-medium">
-                {minutes.toString().padStart(2, "0")}:
-                {seconds.toString().padStart(2, "0")}
-              </span>{" "}
-              minutes
-            </p>
-          </div>
-        ) : (
-          <>
-            <div className="mb-4 transition-all">
-              <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
-              <input
-                type="text"
-                placeholder="1234 5678 9101 2345"
-                value={cardNumber}
-                onChange={(e) => setCardNumber(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
-              />
-            </div>
+//                   <label
+//                     className="flex items-center gap-3 p-4 border-2 border-primary rounded-lg cursor-pointer bg-primary/5"
+//                     onClick={() => dispatch(setPaymentMethod("card"))}
+//                   >
+//                     <input
+//                       type="radio"
+//                       name="payment"
+//                       checked={paymentMethod === "card"}
+//                       onChange={() => dispatch(setPaymentMethod("card"))}
+//                       className="w-4 h-4"
+//                     />
+//                     <span className="font-semibold">Card</span>
+//                   </label>
+//                 </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Expiration Date</label>
-                <input
-                  type="text"
-                  placeholder="MM/YY"
-                  value={expiry}
-                  onChange={(e) => setExpiry(e.target.value)}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
-                <input
-                  type="text"
-                  placeholder="123"
-                  value={cvv}
-                  onChange={(e) => setCvv(e.target.value)}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                />
-              </div>
-            </div>
+//                 {paymentMethod === "transfer" && (
+//                   <div className="space-y-4 p-4 bg-muted/50 rounded-lg mb-8">
+//                     <div>
+//                       <p className="text-sm text-muted-foreground mb-1">Transfer Amount</p>
+//                       <p className="font-bold text-lg">₦{total.toFixed(2)}</p>
+//                     </div>
+//                     <div>
+//                       <p className="text-sm text-muted-foreground mb-1">Polaris Bank</p>
+//                       <p className="font-bold">0123456781</p>
+//                     </div>
+//                     <div>
+//                       <p className="text-sm text-muted-foreground mb-1">Account Name</p>
+//                       <p className="font-bold">Cloudadore Community</p>
+//                     </div>
+//                     <div>
+//                       <p className="text-sm text-muted-foreground mb-1">Expires in</p>
+//                       <p className="font-bold text-orange-500">10:00 minutes</p>
+//                     </div>
+//                   </div>
+//                 )}
 
-            <div className="flex items-center mb-6">
-              <input
-                type="checkbox"
-                checked={saveCard}
-                onChange={(e) => setSaveCard(e.target.checked)}
-                className="mr-2 accent-blue-600"
-              />
-              <label className="text-sm text-gray-600">Save card details</label>
-            </div>
-          </>
-        )}
+//                 {paymentMethod === "card" && (
+//                   <div className="space-y-4 mb-8">
+//                     <div>
+//                       <label className="text-sm font-semibold block mb-2">Card Number</label>
+//                       <input
+//                         type="text"
+//                         placeholder="1234 5678 9012 2345"
+//                         className="w-full px-4 py-2 border border-border rounded-lg"
+//                       />
+//                     </div>
+//                     <div className="grid grid-cols-2 gap-4">
+//                       <div>
+//                         <label className="text-sm font-semibold block mb-2">Expiration Date</label>
+//                         <input
+//                           type="text"
+//                           placeholder="MM/YY"
+//                           className="w-full px-4 py-2 border border-border rounded-lg"
+//                         />
+//                       </div>
+//                       <div>
+//                         <label className="text-sm font-semibold block mb-2">CVV</label>
+//                         <input
+//                           type="text"
+//                           placeholder="123"
+//                           className="w-full px-4 py-2 border border-border rounded-lg"
+//                         />
+//                       </div>
+//                     </div>
+//                     <label className="flex items-center gap-2">
+//                       <input type="checkbox" className="w-4 h-4" />
+//                       <span className="text-sm">Save card details</span>
+//                     </label>
+//                   </div>
+//                 )}
 
-        {/* Confirm / Pay Button */}
-        <button
-          onClick={handleConfirm}
-          className="w-full bg-blue-800 text-white py-2.5 rounded-md font-medium hover:bg-blue-900 transition"
-        >
-          {paymentOption === "card"
-            ? `Pay ₦${amount.toLocaleString()}.00`
-            : "Confirm Payment"}
-        </button>
-      </div>
-    </section>
-  );
-}
+//                 <Button className="w-full bg-primary hover:bg-primary/90 h-12" onClick={handlePaymentSuccess}>
+//                   {paymentMethod === "transfer" ? "Confirm Payment" : `Pay ₦${total.toFixed(2)}`}
+//                 </Button>
+//               </Card>
+//             )}
+
+//             {step === 2 && (
+//               <Card className="p-8 text-center">
+//                 <div className="mb-6">
+//                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+//                     <span className="text-3xl">✓</span>
+//                   </div>
+//                 </div>
+//                 <h2 className="text-2xl font-bold mb-2">Payment Successful!</h2>
+//                 <p className="text-muted-foreground mb-8">
+//                   Your order has been confirmed. You will receive a confirmation email shortly.
+//                 </p>
+//                 <Link href="/">
+//                   <Button className="bg-primary hover:bg-primary/90" onClick={handleContinueShopping}>
+//                     Continue Shopping
+//                   </Button>
+//                 </Link>
+//               </Card>
+//             )}
+//           </div>
+
+//           {/* Order Summary */}
+//           <div>
+//             <Card className="p-6 sticky top-4">
+//               <h3 className="font-bold mb-4">Order Summary</h3>
+//               <div className="space-y-3 mb-6 pb-6 border-b border-border">
+//                 {cartItems.map((item) => (
+//                   <div key={item.id} className="flex justify-between text-sm">
+//                     <span>
+//                       {(item as any).name ?? item.id} × {item.quantity}
+//                     </span>
+//                     <span>${(((item as any).price ?? 0) * item.quantity).toFixed(2)}</span>
+//                   </div>
+//                 ))}
+//               </div>
+//               <div className="space-y-2 text-sm mb-6">
+//                 <div className="flex justify-between">
+//                   <span className="text-muted-foreground">Subtotal</span>
+//                   <span>${subtotal.toFixed(2)}</span>
+//                 </div>
+//                 <div className="flex justify-between">
+//                   <span className="text-muted-foreground">Shipping</span>
+//                   <span>Free</span>
+//                 </div>
+//                 <div className="flex justify-between">
+//                   <span className="text-muted-foreground">Tax</span>
+//                   <span>${tax.toFixed(2)}</span>
+//                 </div>
+//               </div>
+//               <div className="flex justify-between font-bold text-lg">
+//                 <span>Total</span>
+//                 <span className="text-primary">${total.toFixed(2)} USD</span>
+//               </div>
+//             </Card>
+//           </div>
+//         </div>
+//       </div>
+//     </main>
+//   )
+// }

@@ -1,199 +1,195 @@
-
 import Card from "@/components/Card";
-import CTA from "@/views/CTA";
-import Sponsors from "@/views/Sponsors";
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+const teamMembers = [
+  {
+    name: "Rukayat",
+    role: "Founder",
+    image: "/images/team/member1.jpg",
+  },
+  {
+    name: "Omage Prosper",
+    role: "Founder",
+    image: "/images/team/member2.jpg",
+  },
+  {
+    name: "David ",
+    role: "Founder",
+    image: "/images/team/member3.jpg",
+  },
+  {
+    name: "Adesola Lawal",
+    role: "Founder",
+    image: "/images/team/member4.jpg",
+  },
+  {
+    name: "Adesola Lawal",
+    role: "Founder",
+    image: "/images/team/member5.jpg",
+  },
+  {
+    name: "Adesola Lawal",
+    role: "Founder",
+    image: "/images/team/member6.jpg",
+  },
+  {
+    name: "Adesola Lawal",
+    role: "Founder",
+    image: "/images/team/member7.jpg",
+  },
+  {
+    name: "Adesola Lawal",
+    role: "Founder",
+    image: "/images/team/member8.jpg",
+  },
+];
+
+const partners = [
+  "/images/partners/slack.png",
+  "/images/partners/amazon.png",
+  "/images/partners/logitech.png",
+  "/images/partners/google.png",
+  "/images/partners/facebook.png",
+];
 
 const page = () => {
   return (
     <div>
-      <section className="text-white bg-gray-600 p-30 ">
-        <h1 className="  lg:text-[74px] font-extrabold mx-auto w-[700px] ">
-          About Cloudadore
-        </h1>
-        <p className="lg:text-[20px] font-semibold w-[1200px] mx-auto mt-10  ">
+      <section className="bg-black  text-white  text-center md:p-40">
+        <h1 className=" font-bold text-[15px] md:text-[60px] ">About cloudadore</h1> <br />
+        <p className="m-3">
           Join a global community of innovators shaping the future of cloud
           technology through collaboration, learning, and shared impact.
         </p>
+        {/* add link to send to a page that will allow user send us cash */}
+        <Button className="border border-[#f97316] text-[#f97316] px-3 py-2 my-4 w-[200px] cursor-pointer rounded-md text-sm hover:bg-[#f97316] hover:text-white transition">
+          Donate
+        </Button>
       </section>
-
-      <section className="grid md:grid-cols-2 gap-4 p-4  max-w-7xl mx-auto">
-        {/* left side */}
-        <div>
-          <h1 className=" lg:text-[28px] font-bold">
-            Building the Future of Cloud Innovation
-          </h1>
-          <span>
-            <p className="py-2">
+      <div className="max-w-7xl mx-auto ">
+        <section className="my-8 grid gap-4 m-4  md:grid-cols-2">
+          <div className="space-y-2">
+            <p>
+              {" "}
               At CloudAdore Club, we believe the cloud isn’t just technology,
               it’s a bridge to limitless possibilities. What began as a small
               group of enthusiasts exchanging ideas has grown into a thriving
               hub for cloud professionals, learners, and innovators from all
               walks of life.
             </p>
-            <p className="py-2">
+            <p>
+              {" "}
               Our vision was simple: create a space where knowledge is shared
               openly, challenges turn into opportunities, and connections spark
               collaboration. We’ve seen how the right community can accelerate
               learning, inspire creativity, and fuel bold solutions.
             </p>
-            <p className="py-2">
+            <p>
+              {" "}
               Today, we host workshops, collaborative projects, and networking
               opportunities that help members grow personally and
               professionally. From beginners to seasoned experts, our inclusive
               community thrives on diversity in skills, perspectives, and
-              experiences. <br /> Our story is still being written and we invite
-              you to be part of it. Here, your ideas can take flight, your
-              skills can grow, and your passion for the cloud will be
-              celebrated.
+              experiences.
             </p>
-          </span>
-        </div>
+            <p>
+              {" "}
+              Our story is still being written and we invite you to be part of
+              it. Here, your ideas can take flight, your skills can grow, and
+              your passion for the cloud will be celebrated.
+            </p>
+          </div>
+          <div className="outline outline-red-600 rounded-lg text-center">
+            image gos here
+          </div>
+        </section>
+        {/* mission and vision */}
 
-        {/* right side */}
-        <div>image goes here</div>
-      </section>
-
-      {/* mission a nd vision section */}
-      <section className=" bg-[#F8F9FA]  ">
-        <div className="max-w-7xl mx-auto py-10">
+        <section>
           <div>
-            <h1 className="flex font-bold justify-center text-[#121212]  md:text-[48px] py-2">
+            <h1 className="text-[48px] text-center font-bold ">
               Our Mission and Vision
             </h1>
-            <p className="flex justify-center text-[18px] font-normal text-[#333333] py-2">
+            <p className="text-[18px] text-center m-10">
               Our community provides resources and support for Christians in the
               tech industry <br /> to grow both spiritually and professionally.
             </p>
           </div>
-          <div className="grid p-8 gap-4 md:grid-cols-1 lg:grid-cols-2">
+          <div className="grid gap-10 m-4 md:grid-cols-2">
             <Card
-              // icon={}
+              icon={undefined}
               featureCardHeader="Our Mission"
               featureCardText="Our mission is to empower individuals at every stage of their cloud journey by providing access to knowledge, fostering collaboration, and creating opportunities for growth through education, community, and real-world engagement."
-              // styling for the header
-              fchStyle="text-[28px] p-2 font-semibold"
-              // styling fr the text
-              fctStyle="  md:w-[540px] text-[18px] font-normal"
-              className="bg-[#E5F9FF4D] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
+              className="bg-[#E5F9FF4D]"
             />
             <Card
+              icon={undefined}
               featureCardHeader="Our Vision"
               featureCardText="To create a vibrant and inclusive cloud community that empowers individuals and organizations to unlock their full potential in the digital world."
-              // styling for the header
-              fchStyle="text-[28px] p-2 font-semibold"
-              // styling fr the text
-              fctStyle="  md:w-[540px] text-[18px] font-normal"
-              className="bg-[#FFE7AC33] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
+              className="bg-[#EB842B]"
             />
           </div>
-        </div>
-      </section>
+        </section>
+        <section className="bg-white py-16 px-6 md:px-20">
+          {/* Team Section */}
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800">
+              Meet our Dedicated Team
+            </h2>
+          </div>
 
-      {/* meet the team section */}
-      <section>
-        <div className="max-w-7xl mx-auto ">
-          <h1 className="flex  justify-center py-8 text-[40px] font-bold ">Meet our dedicated team</h1>
-          <div className="grid gap-8 space-y-8 md:grid-cols-2 lg:grid-cols-4">
-            <Card
-              // profilePhoto=""
-              featureCardHeader="Rukayat "
-              featureCardText="Founder"
-              // styling for the header
-              fchStyle="text-[20px] p-2 font-[400] "
-              // styling fr the text
-              fctStyle="   text-[16px] text-[#08568A] font-normal"
-              className="bg-[#E5F9FF4D] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
-            />
-            <Card
-              // profilePhoto=""
-              featureCardHeader="Omage Jehoshaphat Prosper"
-              featureCardText="Front-end developer"
-              // styling for the header
-              fchStyle="text-[20px] p-2 font-[400] "
-              // styling fr the text
-              fctStyle="   text-[16px] text-[#08568A] font-normal"
-              className="bg-[#E5F9FF4D] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
-            />
-            <Card
-              // profilePhoto=""
-              featureCardHeader="David "
-              featureCardText="Front-end developer"
-              // styling for the header
-              fchStyle="text-[20px] p-2 font-[400] "
-              // styling fr the text
-              fctStyle="   text-[16px] text-[#08568A] font-normal"
-              className="bg-[#E5F9FF4D] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
-            />
-            <Card
-              // profilePhoto=""
-              featureCardHeader="Okeyemi Mercy "
-              featureCardText="UI/UX designer"
-              // styling for the header
-              fchStyle="text-[20px] p-2 font-[400] "
-              // styling fr the text
-              fctStyle="   text-[16px] text-[#08568A] font-normal"
-              className="bg-[#E5F9FF4D] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
-            />
-            <Card
-              // profilePhoto=""
-              featureCardHeader="Adesola Lawal"
-              featureCardText="Founder"
-              // styling for the header
-              fchStyle="text-[20px] p-2 font-[400] "
-              // styling fr the text
-              fctStyle="   text-[16px] text-[#08568A] font-normal"
-              className="bg-[#E5F9FF4D] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
-            />
-            <Card
-              // profilePhoto=""
-              featureCardHeader="Adesola Lawal"
-              featureCardText="Founder"
-              // styling for the header
-              fchStyle="text-[20px] p-2 font-[400] "
-              // styling fr the text
-              fctStyle="   text-[16px] text-[#08568A] font-normal"
-              className="bg-[#E5F9FF4D] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
-            />
-            <Card
-              // profilePhoto=""
-              featureCardHeader="Adesola Lawal"
-              featureCardText="Founder"
-              // styling for the header
-              fchStyle="text-[20px] p-2 font-[400] "
-              // styling fr the text
-              fctStyle="   text-[16px] text-[#08568A] font-normal"
-              className="bg-[#E5F9FF4D] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
-            />
-            <Card
-              // profilePhoto=""
-              featureCardHeader="Adesola Lawal"
-              featureCardText="Founder"
-              // styling for the header
-              fchStyle="text-[20px] p-2 font-[400] "
-              // styling fr the text
-              fctStyle="   text-[16px] text-[#08568A] font-normal"
-              className="bg-[#E5F9FF4D] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
-            />
-            <Card
-              // profilePhoto=""
-              featureCardHeader="Adesola Lawal"
-              featureCardText="Founder"
-              // styling for the header
-              fchStyle="text-[20px] p-2 font-[400] "
-              // styling fr the text
-              fctStyle="   text-[16px] text-[#08568A] font-normal"
-              className="bg-[#E5F9FF4D] rounded-xl border shadow-sm p-6 text-center hover:shadow-md transition"
-            />
+          {/* Team Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {teamMembers.map((member, index) => (
+              <div
+                key={index}
+                className="rounded-2xl overflow-hidden shadow-md bg-white hover:shadow-lg transition-shadow"
+              >
+                <div className="relative w-full h-64">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="py-4 text-center">
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {member.name}
+                  </h3>
+                  <p className="text-blue-600 text-sm font-medium">
+                    {member.role}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
-      <Sponsors/>
-      <CTA/>
-      
+
+          {/* Partners Section */}
+          <div className="mt-20 text-center">
+            <h3 className="text-xl font-semibold text-gray-800 mb-6">
+              Our Partners
+            </h3>
+
+            <div className="bg-blue-50 py-8 rounded-lg flex flex-wrap justify-center gap-8">
+              {partners.map((logo, index) => (
+                <div key={index} className="relative w-24 h-10">
+                  <Image
+                    src={logo}
+                    alt={`Partner ${index + 1}`}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 };
 
 export default page;
-

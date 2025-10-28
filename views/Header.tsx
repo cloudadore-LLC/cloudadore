@@ -10,52 +10,47 @@ import {
   Menu,
   X,
   ChevronDown,
+  ShoppingCart,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+// import CartPage from "@/app/cart/page";
+// import { useAppSelector } from "@/lib/hooks";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-
-  const pathname = usePathname();
+  //  const cartItems = useAppSelector((state) => state.cart.items)
+  // const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   const navItems = [
     { name: "Home", link: "/" },
     { name: "About", link: "/about" },
-    { name: "Merch Store", link: "/store" },
+    { name: "Merch Store", link: "/merchstore" },
     {
       name: "Events",
-      dropdown: [
-        { label: "Upcoming Events", link: "/events/upcoming" },
-        { label: "Past Events", link: "/events/past" },
-        { label: "Volunteer", link: "/events/volunteer" },
-      ],
+      link: "/events",
     },
     {
       name: "Resources",
-      dropdown: [
-        { label: "Blog", link: "/resources/blog" },
-        { label: "Downloads", link: "/resources/downloads" },
-        { label: "Media", link: "/resources/media" },
-      ],
+      link: "/resources",
     },
-    { name: "Get Involved", link: "/get-involved" },
+    { name: "Get Involved", link: "/getInvolved" },
     { name: "Contact", link: "/contact" },
   ];
 
   return (
-    <div>
-      <section className="hidden lg:flex justify-between text-sm p-2 bg-[#08568A] text-white">
-        <div className="flex items-center gap-4">
-          <span className="flex items-center gap-1">
-            <Phone className="w-4 h-4" /> +234-8101234567
-          </span>
-          <span className="flex items-center gap-1">
-            <Mail className="w-4 h-4" /> info@cloudadore.com
-          </span>
+    <header className="w-full shadow relative">
+      {/* Top bar */}
+      <div className="bg-[#0f4c81] text-white text-sm flex justify-between items-center px-4 md:px-6 py-2">
+        <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
+            <Phone size={16} />
+            <span>(+234-8101234567)</span>
+          </div>
+          <div className="hidden md:flex items-center space-x-2">
+            <Mail size={16} />
+            <span>info@cloudadore.com</span>
+          </div>
         </div>
 
         <div className="flex items-center space-x-3 text-xs md:text-sm">
@@ -98,109 +93,64 @@ const Header: React.FC = () => {
             />
           </a>
         </div>
-      </section>
+      </div>
 
-      <div className="  max-w-7xl outline flex items-center justify-between px-6 py-4">
-        <h1 className="text-lg font-bold text-blue-900">
+      {/* Main Navbar */}
+      <nav className="flex justify-between items-center px-4 md:px-6 py-3 bg-white relative">
+        {/* Logo */}
+        <div className="flex items-center space-x-2">
+          <img
+            src="/cecf005214585628fbf93a768983a7a24628716b(1).png"
+            alt="Cloudadore Logo"
+            className="h-8"
+          />
           <Link href="/">
-            <Image
-              src="/brandlogo.svg"
-              alt="brandlogo"
-              width={120}
-              height={40}
-            />
+            <span className="text-[#0f4c81] font-bold text-lg">CLOUDADORE</span>
           </Link>
-        </h1>
-        <nav className="hidden md:flex items-center gap-6 text-gray-700">
-          {navItems.map((link) => {
-            const isActive = pathname === link.link;
-            // Only render Link if link.link exists
-            if (link.link) {
-              return (
-                <Link
-                  key={link.name}
-                  href={link.link}
-                  className={`transition-colors ${
-                    isActive
-                      ? "text-blue-700 font-semibold border-b-2 border-blue-700"
-                      : "hover:text-blue-600"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              );
-            }
-            return null;
-          })}
-        </nav>
-        <div className=" hidden lg:flex items-center gap-2">
-          <Button className="outline outline-[#EB842B] text-[#EB842B] bg-white cursor-pointer">
-            Donate
-          </Button>
-          <Button className="bg-[#08568A] text-white cursor-pointer  ">
-            Join Community
-          </Button>
         </div>
 
         {/* Desktop Links */}
         <ul className="hidden lg:flex items-center space-x-6 text-gray-700 text-sm relative">
           {navItems.map((item, index) => (
-            <li
-              key={index}
-              className="relative group"
-              onMouseEnter={() => item.dropdown && setOpenDropdown(item.name)}
-              onMouseLeave={() => item.dropdown && setOpenDropdown(null)}
-            >
-              {item.dropdown ? (
-                <button className="flex items-center space-x-1 hover:text-[#0f4c81] transition">
-                  <span>{item.name}</span>
-                  <ChevronDown size={14} />
-                </button>
-              ) : (
-                <a
-                  href={item.link}
-                  className={`cursor-pointer hover:text-[#0f4c81] hover:underline hover:underline-offset-4 transition ${
-                    item.name === "Contact" ? "border-b-2 border-[#0f4c81]" : ""
-                  }`}
-                >
-                  {item.name}
-                </a>
-              )}
-
-              {/* Dropdown */}
-              {item.dropdown && openDropdown === item.name && (
-                <ul className="absolute left-0 top-full mt-2 bg-white border shadow-lg rounded-md py-2 w-48 z-30">
-                  {item.dropdown.map((sub, i) => (
-                    <li key={i}>
-                      <a
-                        href={sub.link}
-                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-[#0f4c81]"
-                      >
-                        {sub.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
+            <li key={index} className="relative group">
+              <a
+                href={item.link}
+                className={`cursor-pointer hover:text-[#0f4c81] hover:underline hover:underline-offset-4 transition ${
+                  item.name === "Contact" ? "border-b-2 border-[#0f4c81]" : ""
+                }`}
+              >
+                {item.name}
+              </a>
             </li>
           ))}
         </ul>
+        
+         <Link href="/cart" className="relative">
+            {/* <ShoppingCart className="w-5 h-5" />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-destructive text-destructive-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {cartCount}
+              </span>
+            )} */}
+          </Link>
 
         {/* Desktop Buttons */}
-        <div className="hidden lg:flex items-center space-x-3">
+        {/* donate is moved to events page */}
+        {/* <div className="hidden lg:flex items-center space-x-3">
           <a
             href="/donate"
             className="border border-[#f97316] text-[#f97316] px-3 py-1 rounded-md text-sm hover:bg-[#f97316] hover:text-white transition"
           >
             Donate
           </a>
+          join comminuty moved to events page
           <a
             href="/join"
             className="bg-[#0f4c81] text-white px-4 py-1 rounded-md text-sm hover:bg-[#09365e] transition"
           >
             Join Community
           </a>
-        </div>
+        </div> */}
 
         {/* Mobile Hamburger */}
         <div className="lg:hidden">
@@ -208,7 +158,7 @@ const Header: React.FC = () => {
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile Menu */}
       {isOpen && (
@@ -216,72 +166,22 @@ const Header: React.FC = () => {
           <ul className="flex flex-col space-y-3 text-gray-700 text-sm">
             {navItems.map((item, index) => (
               <li key={index} className="flex flex-col">
-                {item.dropdown ? (
-                  <>
-                    <button
-                      onClick={() =>
-                        setOpenDropdown(
-                          openDropdown === item.name ? null : item.name
-                        )
-                      }
-                      className="flex items-center justify-between hover:text-[#0f4c81]"
-                    >
-                      {item.name}
-                      <ChevronDown
-                        size={16}
-                        className={`transition-transform ${
-                          openDropdown === item.name ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    {openDropdown === item.name && (
-                      <ul className="pl-4 mt-2 space-y-2">
-                        {item.dropdown.map((sub, i) => (
-                          <li key={i}>
-                            <a
-                              href={sub.link}
-                              className="block hover:text-[#0f4c81]"
-                            >
-                              {sub.label}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </>
-                ) : (
-                  <a
-                    href={item.link}
-                    className={`cursor-pointer hover:text-[#0f4c81] hover:underline hover:underline-offset-4 ${
-                      item.name === "Contact"
-                        ? "border-b-2 border-[#0f4c81] w-max"
-                        : ""
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                )}
+                <a
+                  href={item.link}
+                  className={`cursor-pointer hover:text-[#0f4c81] hover:underline hover:underline-offset-4 ${
+                    item.name === "Contact"
+                      ? "border-b-2 border-[#0f4c81] w-max"
+                      : ""
+                  }`}
+                >
+                  {item.name}
+                </a>
               </li>
             ))}
           </ul>
-
-          <div className="flex flex-col space-y-3 pt-3">
-            <a
-              href="/donate"
-              className="border border-[#f97316] text-[#f97316] px-3 py-2 rounded-md text-sm hover:bg-[#f97316] hover:text-white transition"
-            >
-              Donate
-            </a>
-            <a
-              href="/join"
-              className="bg-[#0f4c81] text-white px-4 py-2 rounded-md text-sm hover:bg-[#09365e] transition"
-            >
-              Join Community
-            </a>
-          </div>
         </div>
       )}
-    </div>
+    </header>
   );
 };
 
