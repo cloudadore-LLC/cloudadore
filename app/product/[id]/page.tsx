@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import  Header  from "@/views/Header"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Star } from "lucide-react"
-import Link from "next/link"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Star } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductDetail({ params }: { params: { id: string } }) {
-  const [quantity, setQuantity] = useState(1)
-  const [selectedSize, setSelectedSize] = useState("M")
-  const [selectedColor, setSelectedColor] = useState("black")
+  const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState("M");
+  const [selectedColor, setSelectedColor] = useState("black");
 
   const product = {
     id: params.id,
@@ -30,20 +30,21 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
     ],
     shipping: "Free Shipping & Returns: On all orders over $75",
     delivery: "Estimated Delivery: Jul 30 - Aug 03",
-  }
+  };
 
   return (
     <main className="min-h-screen bg-background">
-     
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Product Images */}
           <div className="flex flex-col gap-4">
             <div className="bg-muted rounded-lg overflow-hidden aspect-square">
-              <img
+              <Image
                 src={product.image || "/placeholder.svg"}
                 alt={product.name}
                 className="w-full h-full object-cover"
+                width={400}
+                height={400}
               />
             </div>
             <div className="flex gap-2">
@@ -52,10 +53,12 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                   key={i}
                   className="w-20 h-20 bg-muted rounded-lg overflow-hidden cursor-pointer hover:ring-2 ring-primary"
                 >
-                  <img
+                  <Image
                     src={img || "/placeholder.svg"}
                     alt={`${product.name} ${i + 1}`}
                     className="w-full h-full object-cover"
+                    fill
+                   
                   />
                 </div>
               ))}
@@ -66,30 +69,46 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
           <div className="flex flex-col gap-6">
             <div>
               <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-              <p className="text-muted-foreground mb-4">{product.description}</p>
+              <p className="text-muted-foreground mb-4">
+                {product.description}
+              </p>
 
               <div className="flex items-center gap-4 mb-4">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`w-4 h-4 ${i < Math.floor(product.rating) ? "fill-orange-400 text-orange-400" : "text-muted-foreground"}`}
+                      className={`w-4 h-4 ${
+                        i < Math.floor(product.rating)
+                          ? "fill-orange-400 text-orange-400"
+                          : "text-muted-foreground"
+                      }`}
                     />
                   ))}
                 </div>
-                <span className="text-sm text-muted-foreground">{product.reviews.toLocaleString()} Reviews</span>
+                <span className="text-sm text-muted-foreground">
+                  {product.reviews.toLocaleString()} Reviews
+                </span>
               </div>
 
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-3xl font-bold text-primary">${product.price}</span>
-                <span className="text-lg text-muted-foreground line-through">${product.originalPrice}</span>
-                <span className="text-sm bg-orange-100 text-orange-700 px-2 py-1 rounded">Sale</span>
+                <span className="text-3xl font-bold text-primary">
+                  ${product.price}
+                </span>
+                <span className="text-lg text-muted-foreground line-through">
+                  ${product.originalPrice}
+                </span>
+                <span className="text-sm bg-orange-100 text-orange-700 px-2 py-1 rounded">
+                  Sale
+                </span>
               </div>
             </div>
 
             {/* Size Selection */}
             <div>
-              <label className="text-sm font-semibold mb-3 block">Size: {selectedSize}</label>
+              <label className="text-sm font-semibold mb-3 block">
+                Size: {selectedSize}
+              </label>
               <div className="flex gap-2">
                 {product.sizes.map((size) => (
                   <button
@@ -109,7 +128,9 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
             {/* Color Selection */}
             <div>
-              <label className="text-sm font-semibold mb-3 block">Color: {selectedColor}</label>
+              <label className="text-sm font-semibold mb-3 block">
+                Color: {selectedColor}
+              </label>
               <div className="flex gap-3">
                 {product.colors.map((color) => (
                   <button
@@ -129,7 +150,9 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
             {/* Quantity */}
             <div>
-              <label className="text-sm font-semibold mb-3 block">Quantity</label>
+              <label className="text-sm font-semibold mb-3 block">
+                Quantity
+              </label>
               <div className="flex items-center gap-4 w-fit">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -137,7 +160,9 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 >
                   −
                 </button>
-                <span className="w-8 text-center font-semibold">{quantity}</span>
+                <span className="w-8 text-center font-semibold">
+                  {quantity}
+                </span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
                   className="w-8 h-8 rounded border border-border hover:bg-muted"
@@ -148,21 +173,33 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
             </div>
 
             {/* Add to Cart */}
-            <Link href='/cart'>
-              <Button className="w-full bg-primary hover:bg-primary/90 h-12 text-base">Add to cart</Button>
+            <Link href="/cart">
+              <Button className="w-full bg-primary hover:bg-primary/90 h-12 text-base">
+                Add to cart
+              </Button>
             </Link>
-          
 
             {/* Info */}
             <Card className="p-4 bg-muted/50 border-0">
-              <p className="text-sm text-muted-foreground mb-2">{product.delivery}</p>
-              <p className="text-sm text-muted-foreground">{product.shipping}</p>
+              <p className="text-sm text-muted-foreground mb-2">
+                {product.delivery}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                {product.shipping}
+              </p>
             </Card>
 
             {/* Expandable Sections */}
             <div className="space-y-2">
-              {["Product Description", "Product Description", "Product Description"].map((title, i) => (
-                <Card key={i} className="p-4 cursor-pointer hover:bg-muted/50 transition">
+              {[
+                "Product Description",
+                "Product Description",
+                "Product Description",
+              ].map((title, i) => (
+                <Card
+                  key={i}
+                  className="p-4 cursor-pointer hover:bg-muted/50 transition"
+                >
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-sm">{title}</span>
                     <span className="text-muted-foreground">+</span>
@@ -174,5 +211,5 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
         </div>
       </div>
     </main>
-  )
+  );
 }

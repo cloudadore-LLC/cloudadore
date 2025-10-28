@@ -135,11 +135,14 @@ const page = () => {
             <Link key={product.id} href={`/product/${product.id}`}>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer h-full flex flex-col">
                 <div className="relative bg-muted aspect-square overflow-hidden">
-                  <img
-                    src={product.image || "/placeholder.svg"}
+                  <Image
+                   src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     className="w-full  h-full object-cover hover:scale-105 transition-transform"
+                    width={400}
+                    height={400}
                   />
+                 
                 </div>
                 <div className="p-4 flex flex-col flex-1">
                   <h3 className="font-semibold text-sm mb-2">{product.name}</h3>
