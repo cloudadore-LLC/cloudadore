@@ -1,9 +1,14 @@
-import React from 'react'
+import Hero from "@/components/Resource/Hero";
+import ResourceTabs from "@/components/Resource/ResourceTabs";
+import React from "react";
 
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <div>
+      <Hero />
+      <ResourceTabs />
+    </div>
+  );
+};
 
-export default page
+export default page;

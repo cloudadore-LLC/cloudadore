@@ -1,13 +1,10 @@
+import { User } from "lucide-react";
 import React from "react";
 
 interface FeatureCardProps {
-  icon?: React.ReactNode;
-  profilePhoto?: string,
+  icon: React.ReactNode;
   featureCardHeader: string;
-  fchStyle?: string;
   featureCardText: string;
-  fctStyle?: string;
- 
 
   className?: string;
 }
@@ -16,18 +13,22 @@ const Card = ({
   icon,
   featureCardHeader,
   featureCardText,
-  fchStyle,
-  fctStyle,
-  profilePhoto,
-  
+
   className,
 }: FeatureCardProps) => {
   return (
-      <div className={className}>
-        <div>{profilePhoto}</div>
-      <div className="flex justify-center mb-4 text-blue-600">{icon}</div>
-      <h3 className={fchStyle}>{featureCardHeader}</h3>
-      <p className={fctStyle}>{featureCardText}</p>
+    <div
+      className={`bg-white rounded-xl border shadow-sm p-16 text-center hover:shadow-md transition ${className}`}
+    >
+      <div className="flex justify-center mb-4 text-blue-600">
+        {icon ?? <User size={24} />}
+      </div>
+      <div className="min-w-0 flex-1">
+        <h3 className="text-lg font-semibold text-slate-900 truncate">
+          {featureCardHeader}
+        </h3>
+        <div className="mt-1 text-sm text-slate-600">{featureCardText}</div>
+      </div>
     </div>
   );
 };

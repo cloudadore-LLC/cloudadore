@@ -1,161 +1,146 @@
 import React from "react";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaYoutube,
-  FaInstagram,
-  FaXTwitter,
-} from "react-icons/fa6";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function FooterSection() {
+export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-blue-800 to-blue-900 text-white pt-12">
-      {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
-        {/* Logo & Info */}
+    <footer className="bg-[#002B4E] text-white mt-20">
+      {/* CTA Section */}
+      <div className="max-w-6xl mx-auto -translate-y-16 px-6">
+        <div className="bg-[#0A6BB5] rounded-2xl py-10 px-6 md:px-12 text-center text-white shadow-lg">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+            Ready to be part of our story?
+          </h2>
+          <p className="max-w-2xl mx-auto text-sm md:text-base mb-8 text-blue-100">
+            Join a thriving community of cloud learners, builders, and
+            innovators. Whether you want to learn, share, or lead, there’s a
+            place for you at CloudAdore.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            
+             <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-medium transition">
+              Join Community
+            </button>
+           
+           
+            <button className="border border-white hover:bg-white hover:text-[#0A6BB5] text-white px-6 py-2 rounded-lg font-medium transition">
+              Get Involved
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Main */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6 pb-12">
+        {/* Logo + Contact */}
         <div>
-          <img
-            src="/cecf005214585628fbf93a768983a7a24628716b(1).png"
-            alt="Cloudadore Logo"
-            className="h-8"
-          />
-          <h3 className="text-lg font-bold mb-2">CLOUDADORE</h3>
-          <p className="text-gray-300 text-sm mb-4">
-            Empowering Cloud Enthusiasts Through Community, Collaboration, And
+          <div className="flex items-center gap-2 mb-4">
+            <Image
+              src="/brandlogo.png"
+              alt="CloudAdore Logo"
+              width={40}
+              height={40}
+            />
+            <span className="text-lg font-semibold">CLOUDADORE</span>
+          </div>
+          <p className="text-sm text-blue-200 mb-4">
+            Empowering Cloud Enthusiasts Through Community, Collaboration, and
             Continuous Learning.
           </p>
-          <p className="text-sm mb-1">Email Address</p>
-          <p className="text-sm mb-3">christian@techcommunity.com</p>
-          <p className="text-sm mb-1">Phone Number</p>
-          <p className="text-sm mb-4">+234-810 986 3452</p>
-          <div className="flex space-x-3 text-xl">
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaXTwitter className="cursor-pointer hover:text-gray-300" />
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebookF className="cursor-pointer hover:text-gray-300" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedinIn className="cursor-pointer hover:text-gray-300" />
-            </a>
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaYoutube className="cursor-pointer hover:text-gray-300" />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram className="cursor-pointer hover:text-gray-300" />
-            </a>
+          <p className="text-sm text-blue-200 mb-2">
+            <span className="font-medium text-white">Email:</span>{" "}
+            christiandotecommunity.com
+          </p>
+          <p className="text-sm text-blue-200">
+            <span className="font-medium text-white">Phone:</span> +234 810 086
+            3452
+          </p>
+          <div className="flex gap-3 mt-4">
+            <Link href="#" aria-label="Twitter">
+              <i className="ri-twitter-fill text-xl text-white hover:text-blue-400"></i>
+            </Link>
+            <Link href="#" aria-label="LinkedIn">
+              <i className="ri-linkedin-box-fill text-xl text-white hover:text-blue-400"></i>
+            </Link>
+            <Link href="#" aria-label="Instagram">
+              <i className="ri-instagram-line text-xl text-white hover:text-blue-400"></i>
+            </Link>
+            <Link href="#" aria-label="YouTube">
+              <i className="ri-youtube-fill text-xl text-white hover:text-blue-400"></i>
+            </Link>
           </div>
         </div>
 
         {/* Quick Links */}
         <div>
-          <h4 className="font-semibold mb-3">Quick Links</h4>
-          <ul className="space-y-2 text-gray-300 text-sm">
+          <h3 className="font-semibold mb-4">Quick Links</h3>
+          <ul className="space-y-2 text-blue-200 text-sm">
             <li>
-              <a href="#" className="hover:text-white">
-                Home
-              </a>
+              <Link href="#">Home</Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                About Us
-              </a>
+              <Link href="#">About Us</Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                Events
-              </a>
+              <Link href="#">Events</Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                Get Involved
-              </a>
+              <Link href="#">Get Involved</Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                Resources
-              </a>
+              <Link href="#">Resources</Link>
             </li>
           </ul>
         </div>
 
         {/* Community */}
         <div>
-          <h4 className="font-semibold mb-3">Community</h4>
-          <ul className="space-y-2 text-gray-300 text-sm">
+          <h3 className="font-semibold mb-4">Community</h3>
+          <ul className="space-y-2 text-blue-200 text-sm">
             <li>
-              <a href="#" className="hover:text-white">
-                Join Community
-              </a>
+              <Link href="#">Join Community</Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                Merch Store
-              </a>
+              <Link href="#">Merch Store</Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                Donate
-              </a>
+              <Link href="#">Donate</Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                Contact Us
-              </a>
+              <Link href="#">Contact Us</Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
-                Privacy Policy
-              </a>
+              <Link href="#">Privacy Policy</Link>
             </li>
           </ul>
         </div>
 
         {/* Newsletter */}
         <div>
-          <h4 className="font-semibold mb-3">Stay Updated</h4>
-          <p className="text-gray-300 text-sm mb-3">
+          <h3 className="font-semibold mb-4">Stay Updated</h3>
+          <p className="text-blue-200 text-sm mb-4">
             Subscribe to our newsletter for the latest updates and cloud
             insights.
           </p>
-          <form className="flex flex-col space-y-3">
+          <form className="flex flex-col sm:flex-row gap-3">
             <input
               type="email"
               placeholder="Enter your email address"
-              className="px-3 py-2 rounded-md border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none"
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition"
             >
-              Join Community
+              Subscribe
             </button>
           </form>
         </div>
       </div>
 
-      <div className="border-t border-blue-800 mt-12 pt-8 text-center text-sm text-blue-200">
-        <p>&copy; 2025 Cloudadore. All rights reserved.</p>
+      {/* Bottom Copyright */}
+      <div className="border-t border-blue-700 text-center text-blue-300 text-sm py-4">
+        © 2025 CloudAdore Club. All rights reserved.
       </div>
     </footer>
   );
