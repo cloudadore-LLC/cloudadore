@@ -15,8 +15,7 @@ const MerchCrad = ({
   price,
   image,
   buttonText,
-  onclick,
-  className, 
+  
 }: MerchCardProps) => {
   return (
     <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col">
