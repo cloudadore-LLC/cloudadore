@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import Sponsors from "@/views/Sponsors";
+import PartnerWithUsSection from "@/views/Pwu";
 const teamMembers = [
   {
     name: "Rukayat",
@@ -47,13 +48,13 @@ const teamMembers = [
   },
 ];
 
-const partners = [
-  "/images/partners/slack.png",
-  "/images/partners/amazon.png",
-  "/images/partners/logitech.png",
-  "/images/partners/google.png",
-  "/images/partners/facebook.png",
-];
+// const partners = [
+//   "/images/partners/slack.png",
+//   "/images/partners/amazon.png",
+//   "/images/partners/logitech.png",
+//   "/images/partners/google.png",
+//   "/images/partners/facebook.png",
+// ];
 
 const page = () => {
   return (
@@ -176,24 +177,8 @@ const page = () => {
           </div>
 
           {/* Partners Section */}
-          {/* <div className="mt-20 text-center">
-            <h3 className="text-xl font-semibold text-gray-800 mb-6">
-              Our Partners
-            </h3>
 
-            <div className="bg-blue-50 py-8 rounded-lg flex flex-wrap justify-center gap-8">
-              {partners.map((logo, index) => (
-                <div key={index} className="relative w-24 h-10">
-                  <Image
-                    src={logo}
-                    alt={`Partner ${index + 1}`}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-          </div> */}
+          <PartnerWithUsSection />
         </section>
       </div>
     </div>

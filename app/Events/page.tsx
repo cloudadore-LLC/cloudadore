@@ -4,11 +4,11 @@ import Image from "next/image";
 import backgroundImage from "../../public/eventsImages/FrameC.svg";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
-import { useRouter } from "next/navigation";
+
 import EventCard from "@/components/EventCard";
+import Link from "next/link";
 // public/eventsImages/FrameC.svg
 const page = () => {
-  const router = useRouter();
   return (
     <div>
       <div>
@@ -98,24 +98,21 @@ const page = () => {
         {/* tabs */}
 
         <div className="flex justify-center gap-4 m-10 border-gray-1000">
-          <button
-            onClick={() => router.push("/volunteer")}
-            className="px-6 py-2 rounded-md bg-gray-200 text-gray-800 font-medium hover:bg-blue-600 hover:text-white transition"
-          >
-            Upcoming Events
-          </button>
-          <button
-            onClick={() => router.push("/Pwu")}
-            className="px-6 py-2 rounded-md bg-gray-200 text-gray-800 font-medium hover:bg-blue-600 hover:text-white transition"
-          >
-            Past Events
-          </button>
-          <button
-            onClick={() => router.push("/mentorship")}
-            className="px-6 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
-          >
-            Partner Events
-          </button>
+          <Link href="volunteer">
+            <button className="px-6 py-2 rounded-md bg-gray-200 text-gray-800 font-medium hover:bg-blue-600 hover:text-white transition">
+              Upcoming Events
+            </button>
+          </Link>
+          <Link href="/app/Pwu">
+            <button className="px-6 py-2 rounded-md bg-gray-200 text-gray-800 font-medium hover:bg-blue-600 hover:text-white transition">
+              Past Events
+            </button>
+          </Link>
+          <Link href=".mentorship">
+            <button className="px-6 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
+              Partner Events
+            </button>
+          </Link>
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
