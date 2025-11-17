@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
+import Sponsors from "@/views/Sponsors";
 const teamMembers = [
   {
     name: "Rukayat",
@@ -58,7 +59,10 @@ const page = () => {
   return (
     <div>
       <section className="bg-black  text-white  text-center md:p-40">
-        <h1 className=" font-bold text-[15px] md:text-[60px] ">About cloudadore</h1> <br />
+        <h1 className=" font-bold text-[15px] md:text-[60px] ">
+          About cloudadore
+        </h1>{" "}
+        <br />
         <p className="m-3">
           Join a global community of innovators shaping the future of cloud
           technology through collaboration, learning, and shared impact.
@@ -167,8 +171,12 @@ const page = () => {
             ))}
           </div>
 
+          <div className="mt-14">
+            <Sponsors />
+          </div>
+
           {/* Partners Section */}
-          <div className="mt-20 text-center">
+          {/* <div className="mt-20 text-center">
             <h3 className="text-xl font-semibold text-gray-800 mb-6">
               Our Partners
             </h3>
@@ -185,7 +193,7 @@ const page = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </section>
       </div>
     </div>
