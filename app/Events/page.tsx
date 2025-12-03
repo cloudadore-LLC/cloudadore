@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import backgroundImage from "../../public/eventsImages/FrameC.svg";
+
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 
 import EventCard from "@/components/EventCard";
-import Link from "next/link";
+
 // public/eventsImages/FrameC.svg
 const page = () => {
   return (
