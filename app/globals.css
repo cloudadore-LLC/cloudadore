@@ -12,7 +12,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
+  @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -50,7 +50,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-}
+} 
 
 :root {
   --radius: 0.625rem;
@@ -87,7 +87,7 @@
   --sidebar-ring: oklch(0.707 0.022 261.325);
 }
 
-.dark {
+/* .dark {
   --background: oklch(0.13 0.028 261.692);
   --foreground: oklch(0.985 0.002 247.839);
   --card: oklch(0.21 0.034 264.665);
@@ -119,6 +119,6 @@
   --sidebar-accent-foreground: oklch(0.985 0.002 247.839);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
-}
+} */
 
-
+ 
