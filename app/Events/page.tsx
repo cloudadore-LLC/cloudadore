@@ -11,8 +11,8 @@ import Link from "next/link";
 const page = () => {
   return (
     <div>
-      <div>
-        <Image
+      <div className="bg-[url('/eventsImages/FrameC.svg')] bg-cover bg-center bg-no-repeat h-screen w-full"  >
+        {/* <Image
           src={backgroundImage}
           alt="Background Image"
           height={100}
@@ -22,7 +22,12 @@ const page = () => {
           quality={100} // Optional: Adjust image quality
           priority // Optional: Load image with high priority
           style={{ zIndex: -1 }} // Place the image behind other content
-        />
+        /> */}
+        <section >
+          <Button className="bg-[#0f4c81] text-white px-4 py-2 rounded-md text-sm hover:bg-[#09365e] transition">
+            Join Community
+          </Button>
+        </section>
       </div>
 
       <div className="max-w-7xl mx-auto mt-20 outline grid  md:grid-cols-2">
@@ -94,10 +99,10 @@ const page = () => {
       </div>
       {/* tabs and cards  */}
       <section className="flex flex-col max-w-7xl mx-auto ">
-        <h1 className="text-[35px] font-bold ">All Upcoming Events</h1>
+        <h1 className="text-[35px] m-10 font-bold ">All Upcoming Events</h1>
         {/* tabs */}
 
-        <div className="flex justify-center gap-4 m-10 border-gray-1000">
+        {/* <div className="flex justify-center gap-4 m-10 border-gray-1000">
           <Link href="volunteer">
             <button className="px-6 py-2 rounded-md bg-gray-200 text-gray-800 font-medium hover:bg-blue-600 hover:text-white transition">
               Upcoming Events
@@ -113,14 +118,14 @@ const page = () => {
               Partner Events
             </button>
           </Link>
-        </div>
+        </div> */}
 
         <div className="grid gap-4 md:grid-cols-3">
           <EventCard
             tag="upcoming"
             title="new haven"
             description="our new event for upcoming cloud devs"
-            date="12/12/24"
+            date="12/01/26"
             location="Ojuelegba"
             image="/eventsImages/Rectangle 1463.png"
           />
@@ -136,16 +141,11 @@ const page = () => {
             tag="upcoming"
             title="new haven"
             description="our new event for upcoming cloud devs"
-            date="12/12/24"
+            date="25/01/26"
             location="Ojuelegba"
             image="/eventsImages/Rectangle 1463.png"
           />
         </div>
-      </section>
-      <section>
-        <Button className="bg-[#0f4c81] text-white px-4 py-2 rounded-md text-sm hover:bg-[#09365e] transition">
-          Join Community
-        </Button>
       </section>
     </div>
   );

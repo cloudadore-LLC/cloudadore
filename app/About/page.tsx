@@ -59,7 +59,7 @@ const teamMembers = [
 const page = () => {
   return (
     <div>
-      <section className="bg-black  text-white  text-center md:p-40">
+      <section className="bg-black text-white text-center md:p-40">
         <h1 className=" font-bold text-[15px] md:text-[60px] ">
           About cloudadore
         </h1>{" "}
