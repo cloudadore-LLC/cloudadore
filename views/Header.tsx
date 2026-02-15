@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 // import CartPage from "@/app/cart/page";
 // import { useAppSelector } from "@/lib/hooks";
 
@@ -21,6 +22,8 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   //  const cartItems = useAppSelector((state) => state.cart.items)
   // const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
+
+  const pathname = usePathname();
 
   const navItems = [
     { name: "Home", link: "/" },
@@ -116,7 +119,7 @@ const Header: React.FC = () => {
               <a
                 href={item.link}
                 className={`cursor-pointer hover:text-[#0f4c81] hover:underline hover:underline-offset-4 transition ${
-                  item.name === "Contact" ? "border-b-2 border-[#0f4c81]" : ""
+                 pathname === item.link ? "border-b-2 border-[#0f4c81]" : ""
                 }`}
               >
                 {item.name}
@@ -124,15 +127,15 @@ const Header: React.FC = () => {
             </li>
           ))}
         </ul>
-        
-         <Link href="/cart" className="relative">
-            {/* <ShoppingCart className="w-5 h-5" />
+
+        <Link href="/cart" className="relative">
+          {/* <ShoppingCart className="w-5 h-5" />
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-destructive text-destructive-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {cartCount}
               </span>
             )} */}
-          </Link>
+        </Link>
 
         {/* Desktop Buttons */}
         {/* donate is moved to events page */}
@@ -169,7 +172,7 @@ const Header: React.FC = () => {
                 <a
                   href={item.link}
                   className={`cursor-pointer hover:text-[#0f4c81] hover:underline hover:underline-offset-4 ${
-                    item.name === "Contact"
+                    pathname  === item.link
                       ? "border-b-2 border-[#0f4c81] w-max"
                       : ""
                   }`}
