@@ -108,7 +108,7 @@ const Header: React.FC = () => {
             className="h-8"
           />
           <Link href="/">
-            <span className="text-[#0f4c81] font-bold text-lg">CLOUDADORE</span>
+            <span className="text-[#0f4c81] font-bold text-lg">CloudTecko</span>
           </Link>
         </div>
 
